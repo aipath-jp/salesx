@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Sales X (AIセールスエクセラレータ) | 次世代AIフォーム営業代行</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2563EB', // blue-600
+                        secondary: '#1E40AF', // blue-800
+                        accent: '#06B6D4', // cyan-500
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 画像枠のスタイル */
+        .image-placeholder {
+            background-color: #f3f4f6;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            min-height: 250px;
+            color: #64748b;
+            position: relative;
+            overflow: hidden;
+        }
+        .image-placeholder-label {
+            font-weight: bold;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #475569;
+        }
+        .image-placeholder-prompt {
+            font-size: 0.875rem;
+            background: #e2e8f0;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            width: 100%;
+            max-width: 80%;
+        }
+        /* スライダーのカスタマイズ */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            background: #2563EB;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background .15s ease-in-out;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            background: #1E40AF;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 antialiased bg-slate-50">
+
+    <!-- Header -->
+    <header class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-black text-primary tracking-tight">
+                AI Sales <span class="text-accent">X</span>
+            </a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8 font-medium text-slate-600">
+                <a href="#features" class="hover:text-primary transition">特徴</a>
+                <a href="#pricing" class="hover:text-primary transition">料金プラン</a>
+                <a href="#flow" class="hover:text-primary transition">導入の流れ</a>
+                <a href="#faq" class="hover:text-primary transition">FAQ</a>
+            </nav>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="#contact" class="bg-primary hover:bg-secondary text-white px-6 py-2.5 rounded-full font-bold shadow-lg shadow-blue-500/30 transition transform hover:-translate-y-0.5">
+                    無料相談・診断
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-600 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full">
+            <div class="flex flex-col p-4 space-y-4 font-medium text-slate-600">
+                <a href="#features" class="hover:text-primary">特徴</a>
+                <a href="#pricing" class="hover:text-primary">料金プラン</a>
+                <a href="#flow" class="hover:text-primary">導入の流れ</a>
+                <a href="#faq" class="hover:text-primary">FAQ</a>
+                <a href="#contact" class="bg-primary text-white text-center px-4 py-3 rounded-lg font-bold">無料相談・診断</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 space-y-8">
+                    <div class="inline-block bg-blue-100 text-primary px-4 py-1.5 rounded-full text-sm font-bold tracking-wide mb-2">
+                        次世代 AIフォーム営業代行
+                    </div>
+                    <h1 class="text-4xl lg:text-6xl font-black leading-tight text-slate-900">
+                        500万社超え<br>ビッグデータ×AI最適化で<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">「刺さる」顧客だけ</span>を<br>自動発掘。
+                    </h1>
+                    <p class="text-lg text-slate-600 leading-relaxed">
+                        リスト作成からフォーム送信まで、営業の「泥臭い」プロセスをAIが完遂。<br>
+                        クリックログ追跡機能で、アポ獲得率を飛躍的に向上させます。
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <a href="#contact" class="bg-primary hover:bg-secondary text-white text-center px-8 py-4 rounded-full font-bold text-lg shadow-xl shadow-blue-500/30 transition transform hover:-translate-y-1">
+                            無料でターゲット診断を受ける
+                        </a>
+                        <a href="#contact" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-center px-8 py-4 rounded-full font-bold text-lg shadow-sm transition">
+                            資料をダウンロード
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 w-full">
+                    <!-- 画像枠: ヒーローイメージ -->
+                    <div class="image-placeholder rounded-2xl shadow-2xl bg-white border-0 ring-1 ring-slate-900/5">
+                        <div class="image-placeholder-label"><i class="fas fa-image mr-2"></i>ヒーローイメージ</div>
+                        <div class="image-placeholder-prompt">
+                            プロンプト: 近未来的なオフィスで、ビジネスマンがタブレットを見ている。画面からはAI解析データやグラフがホログラムのように浮かび上がり、無数の企業ロゴの中から特定の企業が光って選ばれる。青と白を基調とした、知的で信頼感のあるトーン。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-6">その営業リスト、<br>本当に「今」アプローチすべき相手ですか？</h2>
+                <p class="text-slate-600">従来の営業手法には、見えない「無駄」が潜んでいます。</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-1/2 order-2 lg:order-1 grid grid-cols-1 gap-6">
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 flex items-start gap-4">
+                        <div class="bg-red-100 text-red-600 w-12 h-12 rounded-full flex items-center justify-center shrink-0 text-xl">
+                            <i class="fas fa-skull"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">終わらないリスト作成</h3>
+                            <p class="text-sm text-slate-600">サブスク型サービスを契約しても、結局検索や精査に膨大な時間がかかり、営業のコアタイムを圧迫します。</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 flex items-start gap-4">
+                        <div class="bg-red-100 text-red-600 w-12 h-12 rounded-full flex items-center justify-center shrink-0 text-xl">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">低い反応率</h3>
+                            <p class="text-sm text-slate-600">ターゲット選定が甘いため、何千件送っても返信が来ない。ブランドイメージの毀損にもつながります。</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 flex items-start gap-4">
+                        <div class="bg-red-100 text-red-600 w-12 h-12 rounded-full flex items-center justify-center shrink-0 text-xl">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">無駄なコスト</h3>
+                            <p class="text-sm text-slate-600">固定費の高い営業代行や、成果の出ないテレアポに疲弊していませんか？</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 order-1 lg:order-2 w-full">
+                    <!-- 画像枠: 悩み -->
+                    <div class="image-placeholder rounded-xl">
+                        <div class="image-placeholder-label"><i class="fas fa-image mr-2"></i>悩みイメージ</div>
+                        <div class="image-placeholder-prompt">
+                            プロンプト: オフィスのデスクで、山積みの書類やPC画面上の膨大なエクセルデータに頭を抱えている営業担当者の様子。少し暗めの照明で、疲労感と閉塞感を表現。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-primary font-bold tracking-wider uppercase text-sm">Solutions</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mt-2">AI Sales X が選ばれる3つの理由</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center text-primary text-3xl mb-6">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">AI × 人力の<br>ハイブリッド高精度選定</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        500万社以上のDBから、業種・資本金等はAIが詳細にスクリーニング。さらに人間の専門家による「ディープ選定」を重ね、ニッチな商材でも決裁者に届くリストを作成。
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-2 border-primary relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">成約率倍増</div>
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center text-primary text-3xl mb-6">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">クリックログ検出で<br>「興味あり」を可視化</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        送信して終わりではありません。メッセージ内のURLクリックを検知し、興味を持った企業をリアルタイムで特定。ホットな顧客へ即時アプローチが可能になります。
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center text-primary text-3xl mb-6">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-4">圧倒的な<br>コストパフォーマンス</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        リスト作成の手間はゼロ。代行プランなら1件あたりの送信コストは業界最安水準。使った分だけの明朗会計で、無駄なコストを削減します。
+                    </p>
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                 <div class="image-placeholder rounded-xl h-48">
+                    <i class="fas fa-chart-pie text-4xl mb-3 text-gray-400"></i>
+                    <p class="font-bold text-gray-700">[画像枠: 機能イメージ]</p>
+                    <p class="text-xs text-gray-500 italic">Prompt: 3つのアイコンが並んでいるイラスト。AIの脳（高精度選定）、メールからクリックマーク（ログ検出）、下がるグラフとコイン（コスト削減）。フラットデザイン。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-primary font-bold tracking-wider text-sm uppercase">Pricing</span>
+                <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mt-2">明朗な料金プラン</h2>
+                <p class="text-slate-600 mt-4">※表示価格は全て税抜きです。</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Plan 1 -->
+                <div class="border border-slate-200 rounded-2xl p-8 hover:border-primary transition-colors relative">
+                    <div class="absolute top-0 right-0 bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">SPOT</div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">AIリスト販売プラン</h3>
+                    <p class="text-slate-500 text-sm mb-6">自分で営業したいが、精度の高いリストだけが欲しい企業様へ</p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                            <span>〜1,000件</span>
+                            <span class="font-bold text-xl">@50円<span class="text-sm font-normal text-slate-500">/件</span></span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                            <span>1,500〜5,000件</span>
+                            <span class="font-bold text-xl text-primary">@40円<span class="text-sm font-normal text-slate-500">/件</span></span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                            <span>10,000件〜</span>
+                            <span class="font-bold text-xl text-accent">@30円<span class="text-sm font-normal text-slate-500">/件</span></span>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 mb-8 text-sm text-slate-600">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> AIスクリーニング</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> 最適化ターゲット選定</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> 500件単位での注文可能</li>
+                    </ul>
+                    <a href="#contact" class="block w-full py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-center rounded-lg transition">
+                        リストについて相談する
+                    </a>
+                </div>
+
+                <!-- Plan 2 -->
+                <div class="border-2 border-primary rounded-2xl p-8 shadow-xl shadow-blue-100 bg-white relative transform md:-translate-y-4">
+                    <div class="absolute top-0 center md:right-0 transform md:-translate-y-1/2 bg-gradient-to-r from-primary to-accent text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-lg">
+                        RECOMMENDED
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">フォーム営業代行プラン</h3>
+                    <p class="text-slate-500 text-sm mb-6">リスト作成から送信まで丸投げ。短期集中で成果を出したい企業様へ</p>
+
+                    <div class="bg-blue-50 rounded-xl p-6 mb-8">
+                        <div class="mb-4">
+                            <label class="block text-sm font-bold text-slate-700 mb-2">
+                                1日の送信件数: <span id="send-count-display" class="text-primary text-xl">100</span> 件
+                            </label>
+                            <input type="range" id="send-count-slider" min="100" max="1000" step="100" value="100">
+                            <div class="flex justify-between text-xs text-slate-400 mt-1">
+                                <span>100件</span>
+                                <span>1000件</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between mb-4">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" id="list-option-check" class="w-5 h-5 text-primary rounded focus:ring-primary border-gray-300">
+                                <span class="ml-2 text-sm font-medium text-slate-700">【人気】送信リスト納品OP (+5,000円)</span>
+                            </label>
+                        </div>
+
+                        <div class="border-t border-blue-200 pt-4 mt-4">
+                            <div class="flex justify-between items-end">
+                                <span class="text-sm font-bold text-slate-600">月額費用(税抜)</span>
+                                <span class="text-4xl font-black text-slate-900" id="total-price-display">19,800<span class="text-lg font-normal ml-1">円</span></span>
+                            </div>
+                            <p class="text-right text-xs text-slate-500 mt-1">月20日稼働 / 3ヶ月契約</p>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 mb-8 text-sm text-slate-600">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> 月〜金 毎日自動送信</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span class="font-bold text-primary">クリックログ検出機能付き</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> 990円 / 100件送信 (業界最安級)</li>
+                    </ul>
+                    <a href="#contact" class="block w-full py-4 px-6 bg-primary hover:bg-secondary text-white font-bold text-center rounded-lg shadow-lg transition transform hover:-translate-y-0.5">
+                        まずはシミュレーション相談
+                    </a>
+                </div>
+            </div>
+            
+        
+        </div>
+    </section>
+
+    <!-- Flow Section -->
+    <section id="flow" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-slate-900">最短3営業日でスタート可能</h2>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-center items-start gap-4 max-w-6xl mx-auto">
+                <!-- Step 1 -->
+                <div class="flex-1 text-center group">
+                    <div class="w-16 h-16 bg-white border-2 border-primary text-primary rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors relative z-10">1</div>
+                    <h3 class="font-bold mb-2">無料相談</h3>
+                    <p class="text-sm text-slate-500 px-4">課題や商材についてヒアリング</p>
+                </div>
+                <!-- Line -->
+                <div class="hidden md:block w-12 h-1 bg-slate-200 mt-8"></div>
+                
+                <!-- Step 2 -->
+                <div class="flex-1 text-center group">
+                    <div class="w-16 h-16 bg-white border-2 border-primary text-primary rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors relative z-10">2</div>
+                    <h3 class="font-bold mb-2">ターゲット案提示</h3>
+                    <p class="text-sm text-slate-500 px-4">AIが最適なターゲット案を提示</p>
+                </div>
+                <!-- Line -->
+                <div class="hidden md:block w-12 h-1 bg-slate-200 mt-8"></div>
+
+                <!-- Step 3 -->
+                <div class="flex-1 text-center group">
+                    <div class="w-16 h-16 bg-white border-2 border-primary text-primary rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors relative z-10">3</div>
+                    <h3 class="font-bold mb-2">リスト生成</h3>
+                    <p class="text-sm text-slate-500 px-4">条件確定後、AI+人力でリスト作成</p>
+                </div>
+                <!-- Line -->
+                <div class="hidden md:block w-12 h-1 bg-slate-200 mt-8"></div>
+
+                <!-- Step 4 -->
+                <div class="flex-1 text-center group">
+                    <div class="w-16 h-16 bg-white border-2 border-primary text-primary rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors relative z-10">4</div>
+                    <h3 class="font-bold mb-2">フォーム送信</h3>
+                    <p class="text-sm text-slate-500 px-4">プロの文面で送信開始</p>
+                </div>
+                <!-- Line -->
+                <div class="hidden md:block w-12 h-1 bg-slate-200 mt-8"></div>
+
+                <!-- Step 5 -->
+                <div class="flex-1 text-center group">
+                    <div class="w-16 h-16 bg-white border-2 border-primary text-primary rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-colors relative z-10">5</div>
+                    <h3 class="font-bold mb-2">改善提案</h3>
+                    <p class="text-sm text-slate-500 px-4">ログ解析レポートを提出</p>
+                </div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto mt-16">
+                <!-- 画像枠: フローチャート -->
+                <div class="image-placeholder rounded-xl h-48">
+                   <div class="image-placeholder-label"><i class="fas fa-project-diagram mr-2"></i>フローチャート</div>
+                   <div class="image-placeholder-prompt">
+                       プロンプト: 5つのステップが矢印で繋がれているインフォグラフィック。各ステップに「相談」「AI解析」「リスト」「送信」「レポート」を表す小さなアイコンを配置。
+                   </div>
+               </div>
+           </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-3xl font-bold text-center text-slate-900 mb-12">よくある質問</h2>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="border border-slate-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left font-bold bg-slate-50 hover:bg-slate-100 flex justify-between items-center focus:outline-none">
+                        <span>Q. 既存リストの持ち込みは可能ですか？</span>
+                        <i class="fas fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 py-4 text-slate-600 bg-white border-t border-slate-100">
+                        A. はい、可能です。お持ちのリストを除外リストとして設定することも、そのリストに対してフォーム送信を行うことも可能です（要相談）。
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border border-slate-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left font-bold bg-slate-50 hover:bg-slate-100 flex justify-between items-center focus:outline-none">
+                        <span>Q. B2B以外に対応していますか？</span>
+                        <i class="fas fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 py-4 text-slate-600 bg-white border-t border-slate-100">
+                        A. 基本的には法人（B2B）向けのフォーム営業に特化しております。B2Cには対応しておりません。
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border border-slate-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left font-bold bg-slate-50 hover:bg-slate-100 flex justify-between items-center focus:outline-none">
+                        <span>Q. 小規模のスタートアップでも依頼できる？</span>
+                        <i class="fas fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 py-4 text-slate-600 bg-white border-t border-slate-100">
+                        A. もちろんです。1日100件からのスモールスタートが可能なため、多くのスタートアップ企業様にご利用いただいております。
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="border border-slate-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left font-bold bg-slate-50 hover:bg-slate-100 flex justify-between items-center focus:outline-none">
+                        <span>Q. 決裁者（社長・部長レベル）はターゲットにできる？</span>
+                        <i class="fas fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 py-4 text-slate-600 bg-white border-t border-slate-100">
+                        A. はい。企業規模や役職者名の有無などの条件でスクリーニングを行うことで、決裁者の目に留まりやすいアプローチが可能です。
+                    </div>
+                </div>
+                
+                 <!-- FAQ Item 5 -->
+                 <div class="border border-slate-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 text-left font-bold bg-slate-50 hover:bg-slate-100 flex justify-between items-center focus:outline-none">
+                        <span>Q. 契約期間は柔軟に変更できますか？</span>
+                        <i class="fas fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 py-4 text-slate-600 bg-white border-t border-slate-100">
+                        A. フォーム営業代行プランは効果測定の観点から「3ヶ月契約」を基本としておりますが、プランのアップグレード等は随時ご相談可能です。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Info Section -->
+    <section class="py-20 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+                <div class="order-2 md:order-1">
+                    <h2 class="text-2xl font-bold mb-6">会社情報</h2>
+                    <table class="w-full text-left border-collapse">
+                        <tr class="border-b border-slate-200">
+                            <th class="py-4 font-medium text-slate-500 w-1/3">会社名</th>
+                            <td class="py-4 font-medium">株式会社Aipath</td>
+                        </tr>
+                        <tr class="border-b border-slate-200">
+                            <th class="py-4 font-medium text-slate-500">所在地</th>
+                            <td class="py-4">東京都渋谷区...（住所）</td>
+                        </tr>
+                        <tr class="border-b border-slate-200">
+                            <th class="py-4 font-medium text-slate-500">代表者</th>
+                            <td class="py-4">山田 太郎</td>
+                        </tr>
+                        <tr class="border-b border-slate-200">
+                            <th class="py-4 font-medium text-slate-500">事業内容</th>
+                            <td class="py-4">AI活用支援、営業DXコンサルティング</td>
+                        </tr>
+                    </table>
+                    <div class="mt-4">
+                        <a href="#" class="text-primary hover:underline text-sm">特定商取引法に基づく表記</a>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <!-- 画像枠: オフィス風景 -->
+                    <div class="image-placeholder rounded-xl h-64">
+                       <div class="image-placeholder-label"><i class="fas fa-building mr-2"></i>オフィスイメージ</div>
+                       <div class="image-placeholder-prompt">
+                           プロンプト: 明るく清潔感のあるモダンなオフィスの会議室。ガラス張りの壁、観葉植物があり、ホワイトボードを使ってディスカッションしているチームの様子。信頼と透明性を表現。
+                       </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-primary text-white relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-white opacity-5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent opacity-10 rounded-full translate-x-1/3 translate-y-1/3"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-4">まずは無料相談で、<br>貴社の「勝ち筋」を見つけませんか？</h2>
+                    <p class="text-blue-100">フォーム送信後、ご入力内容に基づき<strong class="text-white border-b-2 border-accent">AIが「おすすめターゲット案」を即座に自動返信</strong>します。</p>
+                </div>
+
+                <form id="contact-form" class="bg-white rounded-2xl p-8 shadow-2xl text-slate-800 space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold mb-2">会社名</label>
+                            <input type="text" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-blue-100 transition" placeholder="株式会社サンプル" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold mb-2">お名前</label>
+                            <input type="text" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-blue-100 transition" placeholder="営業 太郎" required>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold mb-2">メールアドレス</label>
+                            <input type="email" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-blue-100 transition" placeholder="taro@example.com" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold mb-2">電話番号</label>
+                            <input type="tel" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-blue-100 transition" placeholder="03-1234-5678">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold mb-2">ご検討中のプラン</label>
+                        <select class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-blue-100 transition">
+                            <option value="">選択してください</option>
+                            <option value="list">リスト販売プラン</option>
+                            <option value="agency">フォーム営業代行プラン</option>
+                            <option value="undecided">未定・相談したい</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold mb-2">お問い合わせ内容</label>
+                        <textarea rows="4" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-blue-100 transition" placeholder="現在の営業課題や、ターゲットにしたい業種などご自由にご記入ください。"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary hover:from-blue-600 hover:to-blue-800 text-white font-bold text-lg py-4 rounded-lg shadow-lg transform transition active:scale-95">
+                        送信してターゲット案を受け取る
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="container mx-auto px-4 text-center">
+            <div class="text-2xl font-black text-white tracking-tight mb-4">
+                AI Sales <span class="text-accent">X</span>
+            </div>
+            <p class="text-sm mb-8">AI Sales Accelerator by Aipath Inc.</p>
+            <div class="flex justify-center space-x-6 text-sm mb-8">
+                <a href="#" class="hover:text-white transition">会社概要</a>
+                <a href="#" class="hover:text-white transition">プライバシーポリシー</a>
+                <a href="#" class="hover:text-white transition">利用規約</a>
+            </div>
+            <p class="text-xs">&copy; 2025 Aipath Inc. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Pricing Logic
+        const slider = document.getElementById('send-count-slider');
+        const display = document.getElementById('send-count-display');
+        const priceDisplay = document.getElementById('total-price-display');
+        const optionCheck = document.getElementById('list-option-check');
+
+        function calculatePrice() {
+            const count = parseInt(slider.value);
+            const unitPrice = 990; // 100件あたり
+            const units = count / 100;
+            const days = 20; // 稼働日
+            
+            // 基本料金計算: 単位数 * 単価 * 日数
+            // 例: 100件 * 9.9円/件 * 20日 = 19,800円
+            // 単価990円は100件あたりなので、 units * 990 * 20 ではない。
+            // 1日あたり990円(100件) * 20日 = 19800円
+            let basePrice = units * unitPrice * days;
+
+            if (optionCheck.checked) {
+                basePrice += 5000;
+            }
+
+            // カンマ区切りで表示
+            priceDisplay.innerHTML = basePrice.toLocaleString() + '<span class="text-lg font-normal ml-1">円</span>';
+            display.textContent = count;
+        }
+
+        slider.addEventListener('input', calculatePrice);
+        optionCheck.addEventListener('change', calculatePrice);
+
+        // Mobile Menu
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // FAQ Toggle
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // Contact Form Mock Submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('【デモ】送信が完了しました。\n\nAIが分析した「ターゲット案」をメールアドレス宛に送信しました。（実際のサービスではここに完了画面やAIの簡易診断結果が表示されます）');
+        });
+
+        // Initialize Calculation
+        calculatePrice();
+    </script>
+</body>
+</html>
