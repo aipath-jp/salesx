@@ -511,18 +511,21 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // FAQ Toggle
-        const faqToggles = document.querySelectorAll('.faq-toggle');
+       // FAQ Toggle
+const faqToggles = document.querySelectorAll('.faq-toggle');
+    
+faqToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        const content = toggle.nextElementSibling;
+        const icon = toggle.querySelector('i');
         
-        faqToggles.forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                const content = toggle.nextElementSibling;
-                const icon = toggle.querySelector('i');
-                
-                content.classList.toggle('hidden');
-                icon.classList.toggle('rotate-180');
-            });
-        });
-
+        // 回答の表示/非表示を切り替え
+        content.classList.toggle('hidden');
+        
+        // アイコンの回転を切り替え (トグルで開閉を表現)
+        // HTMLのiタグに 'transition-transform duration-300' があるため、これで動作するはずです
+        icon.classList.toggle('rotate-180');
+    });
+});
 </body>
 </html>
