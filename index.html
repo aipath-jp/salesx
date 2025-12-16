@@ -28,13 +28,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <script>
- tailwind.config = {
+tailwind.config = {
 theme: {
- extend: {
- fontFamily: {
+extend: {
+fontFamily: {
 sans: ['"Noto Sans JP"', 'sans-serif'],
 },
- colors: {
+colors: {
 primary: '#2563EB',
 secondary: '#1E40AF',
 accent: '#06B6D4',
@@ -72,7 +72,7 @@ border-radius: 0.375rem;
 width: 100%;
 max-width: 80%;
 }
- input[type=range] {
+input[type=range] {
 -webkit-appearance: none;
 width: 100%;
 height: 8px;
@@ -80,7 +80,7 @@ background: #e2e8f0;
 border-radius: 5px;
 outline: none;
 }
- input[type=range]::-webkit-slider-thumb {
+input[type=range]::-webkit-slider-thumb {
 -webkit-appearance: none;
 appearance: none;
 width: 24px;
@@ -90,7 +90,7 @@ cursor: pointer;
 border-radius: 50%;
 transition: background .15s ease-in-out;
 }
- input[type=range]::-webkit-slider-thumb:hover {
+input[type=range]::-webkit-slider-thumb:hover {
 background: #1E40AF;
 }
 </style>
@@ -100,7 +100,7 @@ background: #1E40AF;
 <header class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
 <div class="container mx-auto px-4 py-4 flex justify-between items-center">
 <a href="#" class="text-2xl font-black text-primary tracking-tight">
- AI Sales <span class="text-accent">X</span>
+AI Sales <span class="text-accent">X</span>
 </a>
 
 <nav class="hidden md:flex space-x-8 font-medium text-slate-600">
@@ -113,7 +113,7 @@ background: #1E40AF;
 
 <div class="hidden md:flex items-center space-x-4">
 <a href="#contact" class="bg-primary hover:bg-secondary text-white px-6 py-2.5 rounded-full font-bold shadow-lg shadow-blue-500/30 transition transform hover:-translate-y-0.5">
- 無料相談・診断
+無料相談・診断
 </a>
 </div>
 
@@ -151,7 +151,7 @@ background: #1E40AF;
 </p>
 <div class="flex flex-col sm:flex-row gap-4 pt-4">
 <a href="#contact" class="bg-primary hover:bg-secondary text-white text-center px-8 py-4 rounded-full font-bold text-lg shadow-xl shadow-blue-500/30 transition transform hover:-translate-y-1">
- 無料でターゲット診断を受ける
+無料でターゲット診断を受ける
 </a>
 </div>
 </div>
@@ -250,52 +250,56 @@ background: #1E40AF;
 </section>
 
 <section id="comparison" class="py-16 bg-white">
- <div class="container mx-auto px-4">
-  <div class="text-center max-w-4xl mx-auto mb-12">
-   <span class="text-primary font-bold tracking-wider text-sm uppercase">Cost Efficiency</span>
-   <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-2">WEB広告運用と比較した際の費用対効果</h2>
-   <p class="text-slate-600 mt-4">従来の集客・営業手法よりも、AI Sales Xは圧倒的な低コストで顕在層にリーチします。</p>
-  </div>
+<div class="container mx-auto px-4">
+ <div class="text-center max-w-4xl mx-auto mb-12">
+ <span class="text-primary font-bold tracking-wider text-sm uppercase">Cost Efficiency</span>
+ <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-2">WEB広告運用と比較した際の費用対効果</h2>
+ <p class="text-slate-600 mt-4">従来の集客・営業手法よりも、AI Sales Xは圧倒的な低コストで顕在層にリーチします。</p>
+ </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-   <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 shadow-md">
-    <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center"><i class="fas fa-ad text-yellow-500 mr-2"></i> WEB広告運用 (Google, Meta, etc.)</h3>
-    <ul class="space-y-3 text-sm text-slate-600">
-     <li class="flex justify-between items-center"><span class="font-medium">月額費用目安</span><span class="text-red-600 font-bold">15万円〜（広告費）</span></li>
-     <li class="flex justify-between items-center"><span class="font-medium">ターゲット層</span><span class="text-slate-700">潜在層 / 能動的な検索層</span></li>
-     <li class="flex justify-between items-center"><span class="font-medium">工数</span><span class="text-slate-700">LP制作、広告設定・調整が必要</span></li>
-     <li class="flex justify-between items-center"><span class="font-medium">獲得成果</span><span class="text-slate-700">リード獲得 / ブランディング</span></li>
-    </ul>
-    <p class="text-xs text-slate-500 mt-4">※自社運用の場合</p>
-   </div>
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+ <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 shadow-md">
+  <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center"><i class="fas fa-ad text-yellow-500 mr-2"></i> WEB広告運用 (Google, Meta, etc.)</h3>
+  <ul class="space-y-3 text-sm text-slate-600">
+  <li class="flex justify-between items-center"><span class="font-medium">月額費用目安</span><span class="text-red-600 font-bold">15万円〜（広告費）</span></li>
+  <li class="flex justify-between items-center"><span class="font-medium">ターゲット層</span><span class="text-slate-700">潜在層 / 能動的な検索層</span></li>
+  <li class="flex justify-between items-center"><span class="font-medium">リーチ単価</span><span class="text-green-600 font-bold">約1.5円〜2円</span></li>
+  <li class="flex justify-between items-center"><span class="font-medium">工数</span><span class="text-slate-700">LP制作、広告設定・調整が必要</span></li>
+  <li class="flex justify-between items-center"><span class="font-medium">獲得成果</span><span class="text-slate-700">リード獲得 / ブランディング</span></li>
+  </ul>
+  <p class="text-xs text-slate-500 mt-4">※自社運用の場合</p>
+ </div>
 
-   <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 shadow-md">
-    <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center"><i class="fas fa-building text-orange-500 mr-2"></i> 広告代理店への依頼</h3>
-    <ul class="space-y-3 text-sm text-slate-600">
-     <li class="flex justify-between items-center"><span class="font-medium">月額費用目安</span><span class="text-red-600 font-bold">22万円〜</span></li>
-     <li class="text-xs text-red-600 font-normal text-right">（依頼費用7万円＋広告費15万円）</li>
-     <li class="flex justify-between items-center"><span class="font-medium">ターゲット層</span><span class="text-slate-700">潜在層 / 能動的な検索層</span></li>
-     <li class="flex justify-between items-center"><span class="font-medium">工数</span><span class="text-slate-700">ほぼゼロ</span></li>
-     <li class="flex justify-between items-center"><span class="font-medium">獲得成果</span><span class="text-slate-700">リード獲得 / ブランディング</span></li>
-    </ul>
-
-   </div>
-
-   <div class="bg-primary p-6 rounded-xl border-2 border-primary shadow-xl relative text-white">
-    <div class="absolute top-0 right-0 bg-accent text-slate-900 text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-xl">圧倒的コスパ</div>
-    <h3 class="text-lg font-bold mb-3 flex items-center text-white"><i class="fas fa-robot text-white mr-2"></i> AI Sales X 代行プラン</h3>
-    <ul class="space-y-3 text-sm">
-     <li class="flex justify-between items-center"><span class="font-medium">月額費用目安 (500件/日)</span><span class="text-yellow-300 text-xl font-black">36,000円</span></li>
-     <li class="flex justify-between items-center"><span class="font-medium">ターゲット層</span><span class="font-bold text-white">今すぐ接点を持つべき顕在層</span></li>
-     <li class="flex justify-between items-center"><span class="font-medium">工数</span><span class="font-bold text-white">ゼロ（リスト作成・送信丸投げ）</span></li>
-     <li class="flex justify-between items-center"><span class="font-medium">獲得成果</span><span class="font-bold text-white">アポ獲得 / 商談化</span></li>
-    </ul>
-    <p class="text-xs text-blue-200 mt-4">※月20日稼働、リスト納品OPなしの場合</p>
-   </div>
-  </div>
+ <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 shadow-md">
+  <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center"><i class="fas fa-building text-orange-500 mr-2"></i> 広告代理店への依頼</h3>
+  <ul class="space-y-3 text-sm text-slate-600">
+  <li class="flex justify-between items-center"><span class="font-medium">月額費用目安</span><span class="text-red-600 font-bold">22万円〜</span></li>
+  <li class="text-xs text-red-600 font-normal text-right">（依頼費用7万円＋広告費15万円）</li>
+  <li class="flex justify-between items-center"><span class="font-medium">ターゲット層</span><span class="text-slate-700">潜在層 / 能動的な検索層</span></li>
+  <li class="flex justify-between items-center"><span class="font-medium">リーチ単価</span><span class="text-green-600 font-bold">約1.5円〜2円</span></li>
+  <li class="flex justify-between items-center"><span class="font-medium">工数</span><span class="text-slate-700">ほぼゼロ</span></li>
+  <li class="flex justify-between items-center"><span class="font-medium">獲得成果</span><span class="text-slate-700">リード獲得 / ブランディング</span></li>
+  </ul>
 
  </div>
+
+ <div class="bg-primary p-6 rounded-xl border-2 border-primary shadow-xl relative text-white">
+  <div class="absolute top-0 right-0 bg-accent text-slate-900 text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-xl">圧倒的コスパ</div>
+  <h3 class="text-lg font-bold mb-3 flex items-center text-white"><i class="fas fa-robot text-white mr-2"></i> AI Sales X 代行プラン</h3>
+  <ul class="space-y-3 text-sm">
+  <li class="flex justify-between items-center"><span class="font-medium">月額費用目安 (300件/日)</span><span class="text-yellow-300 text-xl font-black">54,000円</span></li>
+  <li class="flex justify-between items-center"><span class="font-medium">ターゲット層</span><span class="font-bold text-white">今すぐ接点を持つべき顕在層</span></li>
+  <li class="flex justify-between items-center"><span class="font-medium">リーチ単価</span><span class="text-yellow-300 font-black">9円</span></li>
+  <li class="flex justify-between items-center"><span class="font-medium">工数</span><span class="font-bold text-white">ゼロ（リスト作成・送信丸投げ）</span></li>
+  <li class="flex justify-between items-center"><span class="font-medium">獲得成果</span><span class="font-bold text-white">アポ獲得 / 商談化</span></li>
+  </ul>
+  <p class="text-xs text-blue-200 mt-4">※月20日稼働、リスト納品OPなしの場合</p>
+ </div>
+ </div>
+
+</div>
 </section>
+
 <section id="pricing" class="py-16 bg-white">
 <div class="container mx-auto px-4">
 <div class="text-center max-w-3xl mx-auto mb-12">
@@ -344,10 +348,10 @@ RECOMMENDED
 <div class="bg-blue-50 rounded-xl p-6 mb-8">
 <div class="mb-4">
 <label class="block text-sm font-bold text-slate-700 mb-2">
- 1日の送信件数: <span id="send-count-display" class="text-primary text-xl">250</span> 件  </label>
-<input type="range" id="send-count-slider" min="250" max="1000" step="250" value="250">
+1日の送信件数: <span id="send-count-display" class="text-primary text-xl">100</span> 件</label>
+<input type="range" id="send-count-slider" min="100" max="1000" step="100" value="100">
 <div class="flex justify-between text-xs text-slate-400 mt-1">
-<span>250件</span> <span>1000件</span> </div>
+<span>100件</span> <span>1000件</span> </div>
 </div>
 
 <div class="flex items-center justify-between mb-4">
@@ -367,14 +371,15 @@ RECOMMENDED
 </div>
 
 <ul class="space-y-3 mb-8 text-sm text-slate-600">
-<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> 月〜金 毎日自動送信</li>
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> 月〜金 毎日送信</li>
 <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> <span class="font-bold text-primary">クリックログ検出機能付き</span></li>
-<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> 900円 / 250件送信 (1通あたり4円以下の業界最安級）</li>
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> 900円 / 100件送信 (1通あたり9円の業界最安級）</li>
 </ul>
 <a href="#contact" class="block w-full py-4 px-6 bg-primary hover:bg-secondary text-white font-bold text-center rounded-lg shadow-lg transition transform hover:-translate-y-0.5">
 まずはシミュレーション相談
 </a>
 </div>
+ 
 </div>
 </div>
 </section>
@@ -591,62 +596,62 @@ AI Sales <span class="text-accent">X</span>
  </div>
 </div>
 <script>
-// Pricing Logic
- const slider = document.getElementById('send-count-slider');
- const display = document.getElementById('send-count-display');
+// Pricing Logic (Modified)
+const slider = document.getElementById('send-count-slider');
+const display = document.getElementById('send-count-display');
 const priceDisplay = document.getElementById('total-price-display');
 const optionCheck = document.getElementById('list-option-check');
 
- function calculatePrice() {
-const count = parseInt(slider.value);
-const unitPrice = 900; // 250件あたり
-const unitCount = 250; // ユニット数
-const units = count / unitCount;
-const days = 20; // 稼働日
+function calculatePrice() {
+    const count = parseInt(slider.value);
+    const unitPrice = 900; // 100件あたり
+    const unitCount = 100; // ユニット数
+    const units = count / unitCount;
+    const days = 20; // 稼働日
 
-// 基本料金計算
-let basePrice = units * unitPrice * days;
+    // 基本料金計算: (件数/100) * 900円 * 20日
+    let basePrice = units * unitPrice * days;
 
-if (optionCheck.checked) {
- basePrice += 5000; // リスト納品オプション
-}
+    if (optionCheck.checked) {
+        basePrice += 5000; // リスト納品オプション
+    }
 
-// カンマ区切りで表示
-priceDisplay.innerHTML = basePrice.toLocaleString() + '<span class="text-lg font-normal ml-1">円</span>';
-display.textContent = count;
+    // カンマ区切りで表示
+    priceDisplay.innerHTML = basePrice.toLocaleString() + '<span class="text-lg font-normal ml-1">円</span>';
+    display.textContent = count;
 }
 
 // ページ読み込み時に一度計算を実行し、初期値を表示します
- calculatePrice();
+calculatePrice();
 
- slider.addEventListener('input', calculatePrice);
- optionCheck.addEventListener('change', calculatePrice);
+slider.addEventListener('input', calculatePrice);
+optionCheck.addEventListener('change', calculatePrice);
 
-// Mobile Menu
- const menuBtn = document.getElementById('mobile-menu-btn');
- const mobileMenu = document.getElementById('mobile-menu');
+// Mobile Menu (未修正)
+const menuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
 
- menuBtn.addEventListener('click', () => {
+menuBtn.addEventListener('click', () => {
 mobileMenu.classList.toggle('hidden');
 });
 
-// FAQ Toggle
+// FAQ Toggle (未修正)
 const faqToggles = document.querySelectorAll('.faq-toggle');
 
 faqToggles.forEach(toggle => {
 toggle.addEventListener('click', () => {
- const content = toggle.nextElementSibling;
- const icon = toggle.querySelector('i');
+const content = toggle.nextElementSibling;
+const icon = toggle.querySelector('i');
 
 // 回答の表示/非表示を切り替え
- content.classList.toggle('hidden');
+content.classList.toggle('hidden');
 
 // アイコンの回転を切り替え (トグルで開閉を表現)
- icon.classList.toggle('rotate-180');
+icon.classList.toggle('rotate-180');
 });
 });
 
-// Privacy Policy & Tokushoho Modal Logic
+// Privacy Policy & Tokushoho Modal Logic (未修正)
 const privacyBtn = document.getElementById('open-privacy-policy');
 const tokushohoBtn = document.getElementById('open-tokushoho'); 
 const privacyModal = document.getElementById('privacy-policy-modal');
