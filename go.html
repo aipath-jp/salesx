@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    // URLからidを取得
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    // あなたの長いGASのURL
+    const gasUrl = "https://script.google.com/macros/s/AKfycbwYIqaNSnvyb0_mZtm2pVZ1-36H3xzV3K7gVi57vubKy7cRsllDCFYQLZZeJKkZLjVkxg/exec";
+    
+    if (id) {
+      // GASへ転送
+      window.location.replace(gasUrl + "?id=" + id);
+    } else {
+      // IDがない場合はトップへ
+      window.location.replace("https://aipath-jp.github.io/salesx/");
+    }
+  </script>
+</head>
+<body>
+  <p>Loading...</p>
+</body>
+</html>
